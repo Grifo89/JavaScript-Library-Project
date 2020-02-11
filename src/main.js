@@ -8,6 +8,8 @@ function Book(author, title, pages, read) {
 }
 
 function addBookToLibrary() {
+  let author; let title; let pages; let
+    read;
   const book = new Book(
     author = document.getElementsByName('author')[0].value,
     title = document.getElementsByName('title')[0].value,
