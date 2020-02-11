@@ -80,7 +80,7 @@ function addBookToLibrary() {
   render();
 }
 
-(function () {
+(function add() {
   document.getElementById('submit').addEventListener('click', () => {
     addBookToLibrary();
   });
