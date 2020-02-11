@@ -6,21 +6,28 @@ function Book(author, title, pages, read) {
   this.pages = pages;
   this.read = read;
 }
+function setStatus(read, button) {
+  if (read) {
+    button.innerText = 'Read';
+  } else {
+    button.innerText = 'Not read yet';
+  }
+}
 
-function addBookToLibrary() {
-  let author; let title; let pages; let
-    read;
-  const book = new Book(
-    author = document.getElementsByName('author')[0].value,
-    title = document.getElementsByName('title')[0].value,
-    pages = document.getElementsByName('pages')[0].value,
-    read = false,
-  );
-  myLibrary.push(book);
-  document.getElementsByName('author')[0].value = '';
-  document.getElementsByName('title')[0].value = '';
-  document.getElementsByName('pages')[0].value = '';
-  render();
+function switchStatus(e) {
+  const index = e.srcElement.attributes['1'].value;
+  myLibrary[parseInt(index, 10)].read = !myLibrary[parseInt(index, 10)].read;
+  setStatus(myLibrary[parseInt(index, 10)].read, e.target);
+}
+
+function removeBook(e) {
+  const body = document.querySelector('.flex');
+  const child = e.target.parentNode;
+  if (child && myLibrary.length !== 0) {
+    body.removeChild(child);
+    const index = e.srcElement.attributes['1'].value;
+    delete myLibrary[index];
+  }
 }
 
 function render() {
@@ -55,26 +62,20 @@ function render() {
   });
 }
 
-function setStatus(read, button) {
-  if (read) {
-    button.innerText = 'Read';
-  } else {
-    button.innerText = 'Not read yet';
-  }
-}
-
-function switchStatus(e) {
-  const index = e.srcElement.attributes['1'].value;
-  myLibrary[parseInt(index)].read = !myLibrary[parseInt(index)].read;
-  setStatus(myLibrary[parseInt(index)].read, e.target);
-}
-
-function removeBook(e) {
-  const body = document.querySelector('.flex');
-  const child = e.target.parentNode;
-  if (child && myLibrary.length !== 0) {
-    body.removeChild(child);
-    const index = e.srcElement.attributes['1'].value;
-    delete myLibrary[index];
-  }
+function addBookToLibrary() {
+  let author = document.getElementsByName('author')[0].value;
+  let title = document.getElementsByName('title')[0].value;
+  let pages = document.getElementsByName('pages')[0].value;
+  const read = false;
+  const book = new Book(
+    this.author = author,
+    this.title = title,
+    this.pages = pages,
+    this.read = read,
+  );
+  myLibrary.push(book);
+  author = '';
+  title = '';
+  pages = '';
+  render();
 }
