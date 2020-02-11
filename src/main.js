@@ -63,9 +63,9 @@ function render() {
 }
 
 function addBookToLibrary() {
-  let author = document.getElementsByName('author')[0].value;
-  let title = document.getElementsByName('title')[0].value;
-  let pages = document.getElementsByName('pages')[0].value;
+  const author = document.getElementsByName('author')[0].value;
+  const title = document.getElementsByName('title')[0].value;
+  const pages = document.getElementsByName('pages')[0].value;
   const read = false;
   const book = new Book(
     this.author = author,
@@ -74,8 +74,8 @@ function addBookToLibrary() {
     this.read = read,
   );
   myLibrary.push(book);
-  author = '';
-  title = '';
-  pages = '';
+  document.getElementsByName('author')[0].value = '';
+  document.getElementsByName('title')[0].value = '';
+  document.getElementsByName('pages')[0].value = '';
   render();
 }
