@@ -79,3 +79,7 @@ function addBookToLibrary() {
   document.getElementsByName('pages')[0].value = '';
   render();
 }
+
+document.getElementById('submit').addEventListener('click', () => {
+  addBookToLibrary();
+});
