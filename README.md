@@ -5,7 +5,7 @@
 
 ## Live link
 
-* #
+* [☝ link](https://grifo89.github.io/JavaScript-Library-Project/public/index.html)
 
 ## Built With ✨
 
