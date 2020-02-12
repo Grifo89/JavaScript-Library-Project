@@ -6,6 +6,10 @@ form{
   display: block;
 }
 
+.modal {
+  display: none;
+}
+
 .flex{
   display: flex;
   flex-wrap: wrap;

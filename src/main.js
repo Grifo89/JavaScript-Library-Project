@@ -81,8 +81,25 @@ function addBookToLibrary() {
   render();
 }
 
-(function add() {
-  document.getElementById('submit').addEventListener('click', () => {
-    addBookToLibrary();
-  });
-}());
+document.getElementById('submit').addEventListener('click', () => {
+  addBookToLibrary();
+})
+
+function openForm() {
+  document.getElementById('form').style.display = "block"
+}
+
+function closeForm() {
+  document.getElementById('form').style.display = "none"
+}
+
+document.getElementById('new-book').addEventListener('click', (e) => {
+  openForm()
+})
+
+document.getElementById('close').addEventListener('click', (e) => {
+  closeForm()
+})
+
+closeForm()
+
