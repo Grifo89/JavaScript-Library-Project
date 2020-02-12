@@ -21,6 +21,7 @@ function switchStatus(e) {
   const index = e.srcElement.attributes['1'].value;
   myLibrary[parseInt(index, 10)].read = !myLibrary[parseInt(index, 10)].read;
   setStatus(myLibrary[parseInt(index, 10)].read, e.target);
+  localStorage.setItem('items', JSON.stringify(myLibrary));
 }
 
 function removeBook(e) {
@@ -30,6 +31,7 @@ function removeBook(e) {
     body.removeChild(child);
     const index = e.srcElement.attributes['1'].value;
     delete myLibrary[index];
+    localStorage.setItem('items', JSON.stringify(myLibrary));
   }
 }
 
@@ -51,20 +53,22 @@ function render() {
   const body = document.querySelector('.flex');
   const data = JSON.parse(localStorage.getItem('items'));
   data.forEach((item, i) => {
-    title.innerHTML = `Title: ${item.title}`;
-    author.innerHTML = `Author: ${item.author}`;
-    pages.innerHTML = `Number of pages: ${item.pages}`;
-    button.innerHTML = 'Status';
-    button.setAttribute('class', 'status');
-    remove.innerHTML = 'Remove';
-    remove.setAttribute('class', 'remove');
-    div.appendChild(title).setAttribute('class', 'title');
-    div.appendChild(author).setAttribute('class', 'author');
-    div.appendChild(pages).setAttribute('class', 'pages');
-    div.appendChild(button).setAttribute('rel', i);
-    div.appendChild(remove).setAttribute('rel', i);
+    if (item) {
+      title.innerHTML = `Title: ${item.title}`;
+      author.innerHTML = `Author: ${item.author}`;
+      pages.innerHTML = `Number of pages: ${item.pages}`;
+      button.innerHTML = 'Status';
+      button.setAttribute('class', 'status');
+      remove.innerHTML = 'Remove';
+      remove.setAttribute('class', 'remove');
+      div.appendChild(title).setAttribute('class', 'title');
+      div.appendChild(author).setAttribute('class', 'author');
+      div.appendChild(pages).setAttribute('class', 'pages');
+      div.appendChild(button).setAttribute('rel', i);
+      div.appendChild(remove).setAttribute('rel', i);
 
-    body.appendChild(div).setAttribute('class', 'book-container');
+      body.appendChild(div).setAttribute('class', 'book-container');
+    }
   });
 }
 
