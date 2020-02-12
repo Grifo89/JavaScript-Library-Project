@@ -8,6 +8,7 @@ form{
 
 .flex{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .book-container{

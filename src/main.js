@@ -6,6 +6,7 @@ function Book(author, title, pages, read) {
   this.pages = pages;
   this.read = read;
 }
+
 function setStatus(read, button) {
   if (read) {
     button.innerText = 'Read';
