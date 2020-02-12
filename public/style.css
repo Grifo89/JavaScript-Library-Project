@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+form{
+  display: block;
+}
+
+.modal {
+  display: none;
+}
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-container{
+  padding: 0px 10px;
+}
