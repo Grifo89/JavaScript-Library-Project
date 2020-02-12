@@ -1,5 +1,5 @@
 const myLibrary = [];
-localStorage.setItem('items', JSON.stringify(myLibrary))
+localStorage.setItem('items', JSON.stringify(myLibrary));
 
 
 function Book(author, title, pages, read) {
@@ -41,15 +41,16 @@ function render() {
   const button = document.createElement('button');
   button.addEventListener('click', (e) => {
     switchStatus(e);
+    e.preventDefault();
   });
   const remove = document.createElement('button');
   remove.addEventListener('click', (e) => {
     removeBook(e);
+    e.preventDefault();
   });
   const body = document.querySelector('.flex');
-  let data = JSON.parse(localStorage.getItem('items'))
+  const data = JSON.parse(localStorage.getItem('items'));
   data.forEach((item, i) => {
-    
     title.innerHTML = `Title: ${item.title}`;
     author.innerHTML = `Author: ${item.author}`;
     pages.innerHTML = `Number of pages: ${item.pages}`;
@@ -79,7 +80,7 @@ function addBookToLibrary() {
     this.read = read,
   );
   myLibrary.push(book);
-  localStorage.setItem('items', JSON.stringify(myLibrary))
+  localStorage.setItem('items', JSON.stringify(myLibrary));
 
   document.getElementsByName('author')[0].value = '';
   document.getElementsByName('title')[0].value = '';
@@ -89,26 +90,25 @@ function addBookToLibrary() {
 
 document.getElementById('submit').addEventListener('click', (e) => {
   addBookToLibrary();
-  e.preventDefault()
-})
+  e.preventDefault();
+});
 
 function openForm() {
-  document.getElementById('form').style.display = "block"
+  document.getElementById('form').style.display = 'block';
 }
 
 function closeForm() {
-  document.getElementById('form').style.display = "none"
+  document.getElementById('form').style.display = 'none';
 }
 
 document.getElementById('new-book').addEventListener('click', (e) => {
-  openForm()
-  e.preventDefault()
-})
+  openForm();
+  e.preventDefault();
+});
 
 document.getElementById('close').addEventListener('click', (e) => {
-  closeForm()
-  e.preventDefault()
-})
+  closeForm();
+  e.preventDefault();
+});
 
-closeForm()
-
+closeForm();
