@@ -1,4 +1,6 @@
 const myLibrary = [];
+localStorage.setItem('items', JSON.stringify(myLibrary))
+
 
 function Book(author, title, pages, read) {
   this.author = author;
@@ -45,7 +47,9 @@ function render() {
     removeBook(e);
   });
   const body = document.querySelector('.flex');
-  myLibrary.forEach((item, i) => {
+  let data = JSON.parse(localStorage.getItem('items'))
+  data.forEach((item, i) => {
+    
     title.innerHTML = `Title: ${item.title}`;
     author.innerHTML = `Author: ${item.author}`;
     pages.innerHTML = `Number of pages: ${item.pages}`;
@@ -75,14 +79,17 @@ function addBookToLibrary() {
     this.read = read,
   );
   myLibrary.push(book);
+  localStorage.setItem('items', JSON.stringify(myLibrary))
+
   document.getElementsByName('author')[0].value = '';
   document.getElementsByName('title')[0].value = '';
   document.getElementsByName('pages')[0].value = '';
   render();
 }
 
-document.getElementById('submit').addEventListener('click', () => {
+document.getElementById('submit').addEventListener('click', (e) => {
   addBookToLibrary();
+  e.preventDefault()
 })
 
 function openForm() {
@@ -95,10 +102,12 @@ function closeForm() {
 
 document.getElementById('new-book').addEventListener('click', (e) => {
   openForm()
+  e.preventDefault()
 })
 
 document.getElementById('close').addEventListener('click', (e) => {
   closeForm()
+  e.preventDefault()
 })
 
 closeForm()
